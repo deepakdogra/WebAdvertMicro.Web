@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Deepak D.</Authors>
+    <Product>Microservices.AdvertApi.Models</Product>
+    <PackageProjectUrl>https://github.com/deepakdogra/WebAdvertMicro.Web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakdogra/WebAdvertMicro.Web.git</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
