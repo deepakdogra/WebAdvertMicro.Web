@@ -92,5 +92,46 @@ namespace WebAdvert.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Login()
+        {
+            var model = new LoginModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user  = await _userPool.FindByIdAsync(model.Email).ConfigureAwait(false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false).ConfigureAwait(false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("LoginError", "Email and Password do not match");
+                }
+            }
+            return View(model);
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            var model = new ForgotPasswordModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //var result = Amazon.
+            }
+            return View(model);
+        }
     }
 }

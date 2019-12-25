@@ -43,6 +43,9 @@ namespace WebAdvert.Web
                 };
             });
             //services.AddCognitoIdentity();
+            services.ConfigureApplicationCookie(options =>
+            { options.LoginPath = "/Account/Login";
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);          
             
         }
@@ -66,7 +69,7 @@ namespace WebAdvert.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }
